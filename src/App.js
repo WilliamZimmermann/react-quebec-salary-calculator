@@ -9,25 +9,38 @@ class App extends React.Component{
     super(props);
     this.state = {
       taxes: {
+        salary: 0,
         provincialTax: 0,
+        provincialTaxAmount: 0,
         federalTax: 0,
+        federalTaxAmount: 0,
         totalTaxes: 0,
+        totalAmountOfTaxes: 0,
+        annualSalaryWithTaxes: 0,
+        monthlySalaryWithTaxes: 0,
       }
     }
   }
 
   calculate(event){
-    console.log("Calcula");
     const salary = event.target.value;
     const provincialTax = this.provincialTax(salary);
+    const provincialTaxAmount = salary * (provincialTax / 100);
     const federalTax = this.federalTax(salary);
+    const federalTaxAmount = salary * (federalTax / 100);
     const totalTaxes = provincialTax + federalTax;
-    //const totalSalary = salary - (salary * totalTaxes);
+    const annualSalaryWithTaxes = salary - (salary * (totalTaxes / 100));
     this.setState({
         taxes: {
+          salary: salary,
           provincialTax: provincialTax,
+          provincialTaxAmount: Number(provincialTaxAmount).toFixed(2),
           federalTax: federalTax,
+          federalTaxAmount: Number(federalTaxAmount).toFixed(2),
           totalTaxes: totalTaxes,
+          totalAmountOfTaxes: Number(provincialTaxAmount + federalTaxAmount).toFixed(2),
+          annualSalaryWithTaxes: Number(annualSalaryWithTaxes).toFixed(2),
+          monthlySalaryWithTaxes: Number(annualSalaryWithTaxes / 12).toFixed(2),
       }
     });
   }

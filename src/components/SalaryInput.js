@@ -6,7 +6,7 @@ export class SalaryInput extends React.Component {
             <div>
                 <label>
                     Salário anual:
-                    <input onKeyUp={this.props.onCalculate} autoFocus type='text' />
+                    <input onKeyUp={this.props.onCalculate} autoFocus type='number' />
                 </label>
             </div>
         );

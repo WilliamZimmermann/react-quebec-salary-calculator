@@ -1,6 +1,7 @@
 import React from 'react';
 
-export function SalaryTable(props) { 
+export function SalaryTable(props) {
+    let taxes = props.taxes;
     return (
         <div>
             <table>
@@ -9,17 +10,17 @@ export function SalaryTable(props) {
                         <td>Taxa Provincial</td>
                         <td>Taxa Federal</td>
                         <td>Total de Taxas</td>
-                        <td>Salário L. Anual</td>
-                        <td>Salário L. Mensal</td>
+                        <td>Salário Real Anual</td>
+                        <td>Salário Real Mensal</td>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{props.provincialTax} % => CAD 00000.00</td>
-                    <td>{props.federalTax} % => CAD 00000.00</td>
-                    <td>{props.totalTaxes} % => CAD 00000.00</td>
-                    <td>CAD 0000.00</td>
-                    <td>CAD 0000.00</td>
+                    <td>{taxes.provincialTax}% => CAD {taxes.provincialTaxAmount}</td>
+                    <td>{taxes.federalTax}% => CAD {taxes.federalTaxAmount}</td>
+                    <td>{taxes.totalTaxes}% => CAD {taxes.totalAmountOfTaxes}</td>
+                    <td>CAD {taxes.annualSalaryWithTaxes}</td>
+                    <td>CAD {taxes.monthlySalaryWithTaxes}</td>
                 </tr>
                 </tbody>
             </table>
