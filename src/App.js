@@ -1,18 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { SalaryInput } from './components/SalaryInput';
 import { SalaryTable } from './components/SalaryTable';
 
 class App extends React.Component{
 
-  constructor(){
-    // Call the father
-    super();
+  constructor(props){
+    super(props);
+    this.state = {
+      taxes: {
+        provincialTax: 0,
+        federalTax: 0,
+        totalTaxes: 0,
+      }
+    }
   }
 
   calculate(event){
     console.log("Calcula");
+    const salary = event.target.value;
+    const provincialTax = this.provincialTax(salary);
+    const federalTax = this.federalTax(salary);
+    const totalTaxes = provincialTax + federalTax;
+    //const totalSalary = salary - (salary * totalTaxes);
+    this.setState({
+        taxes: {
+          provincialTax: provincialTax,
+          federalTax: federalTax,
+          totalTaxes: totalTaxes,
+      }
+    });
   }
 
   /**
@@ -65,14 +82,15 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <header className="App-header">
+        <header>
           <h3>Cálculo do Salário na Província de Québec</h3>
-          <p>
-            Olá professor. Como moro na província de Québec, no Canadá, tomei a liberdade de fazer o cálculo do salário baseado nas leis daqui, e com os impostos daqui.
-          </p>
-          <SalaryInput onCalculate={(event)=>this.calculate(event)}></SalaryInput>
-          <SalaryTable></SalaryTable>
         </header>
+        <p>
+          Olá professor. Como moro na província de Québec, no Canadá, tomei a liberdade de fazer o cálculo do salário baseado nas leis daqui, e com os impostos daqui.
+        </p>
+        <p>Fonte dos cálculos: <a href="http://www.calculconversion.com/income-tax-calculator-quebec.html">http://www.calculconversion.com/income-tax-calculator-quebec.html</a></p>
+        <SalaryInput onCalculate={(event)=>this.calculate(event)}></SalaryInput>
+        <SalaryTable taxes={this.state.taxes}></SalaryTable>
       </div>
     );
   }
