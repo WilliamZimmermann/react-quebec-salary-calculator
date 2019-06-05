@@ -1,23 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { SalaryInput } from './components/SalaryInput';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h3>Cálculo do Salário na Província de Québec</h3>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Olá professor. Como moro na província de Québec, no Canadá, tomei a liberdade de fazer o cálculo do salário baseado nas leis daqui, e com os impostos daqui.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <SalaryInput></SalaryInput>
       </header>
     </div>
   );
