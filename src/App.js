@@ -104,6 +104,9 @@ class App extends React.Component{
         <p>Fonte dos cálculos: <a href="http://www.calculconversion.com/income-tax-calculator-quebec.html">http://www.calculconversion.com/income-tax-calculator-quebec.html</a></p>
         <SalaryInput onCalculate={(event)=>this.calculate(event)}></SalaryInput>
         <SalaryTable taxes={this.state.taxes}></SalaryTable>
+        <footer>
+          Criado por William Zimmermann. Você pode copiar e alterar esse projeto livremente. <a href="https://www.williamzimmermann.com.br" target="_blank">www.williamzimmermann.com.br</a>
+        </footer>
       </div>
     );
   }
